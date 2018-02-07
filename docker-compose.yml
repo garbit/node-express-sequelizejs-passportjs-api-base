@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  web:
+    links:
+      - ta_mysql
+    build: .
+    volumes:
+      - ./:/usr/src/app
+      # - ./assets:/usr/src/app/assets
+      # - ./config:/usr/src/app/config
+      # - ./tasks:/usr/src/app/tasks
+      # - ./views:/usr/src/app/views
+      # - ./.sailsrc:/usr/src/app/.sailsrc
+    command: npm run-script start
+    ports:
+      - "3000:3000"
+      - "5858:5858"
+    env_file: .env
+  ta_mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mydb
