@@ -31,7 +31,7 @@ const auth = require('./routes/auth');
   app.use(expressSession({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitiialized: false
+    saveUninitialized: false
   }));
 
   // Initialize Passport and restore authentication state, if any, from the
